@@ -23,7 +23,7 @@ jobs:
         docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/gpg_test.sh
     - name: Vault test
       run: |
-        docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest vault_test.sh
+        docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/vault_test.sh
     - name: Login to dockerhub
       uses: docker/login-action@v2
       with:
