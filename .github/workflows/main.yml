@@ -21,6 +21,8 @@ jobs:
         context: .
         load: true
         tags: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
+        cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
+        cache-to: type=inline
     - name: Test
       run: |
         docker run --rm ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
