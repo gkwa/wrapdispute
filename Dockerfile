@@ -30,4 +30,4 @@ RUN version=$(curl -s https://api.github.com/repos/99designs/aws-vault/releases/
 RUN curl -Lo /root/.gitconfig https://raw.githubusercontent.com/TaylorMonacelli/dotfiles/master/.gitconfig
 RUN echo alias g=git >>/root/.bashrc
 
-COPY test*.sh /
+COPY test*.sh /tmp/
