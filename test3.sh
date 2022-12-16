@@ -26,6 +26,7 @@ script --flush --command "$myscript" </dev/null
 passphrase=$(grep Passphrase typescript | sed -e 's#Passphrase: *##' | tr -dc '[[:print:]]')
 echo "$passphrase"
 echo "$passphrase" | xxd -c 1
+rm -f $myscript
 
 rm -f /tmp/secret-key-backup.asc
 gpg --export-secret-keys --pinentry-mode=loopback --armor --passphrase="$passphrase" --output=/tmp/secret-key-backup.asc
