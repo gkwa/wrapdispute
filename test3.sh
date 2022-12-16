@@ -7,7 +7,7 @@
 set -e
 set -x
 
-myscript=$(mktemp /tmp/test3.XXXX)
+myscript=$(mktemp /tmp/test3-scratch.XXXX)
 chmod +x $myscript
 script --flush --command $myscript </dev/null
 rm -f $myscript
