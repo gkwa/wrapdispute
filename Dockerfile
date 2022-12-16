@@ -2,7 +2,7 @@ FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get -y install curl keyutils gpg git awscli kwalletmanager pass vim-common
+RUN apt-get update && apt-get -y install curl keyutils gpg git awscli kwalletmanager pass vim-common jq
 
 # gopass
 RUN version=$(curl -s https://api.github.com/repos/gopasspw/gopass/releases/latest | grep -Po '"tag_name": "\K.*?(?=")' | tr -d v) \
@@ -29,7 +29,3 @@ RUN version=$(curl -s https://api.github.com/repos/99designs/aws-vault/releases/
 # ~/.gitconfig
 RUN curl -Lo /root/.gitconfig https://raw.githubusercontent.com/TaylorMonacelli/dotfiles/master/.gitconfig
 RUN echo alias g=git >>/root/.bashrc
-
-COPY gpg_setup.sh /tmp/
-COPY gpg_test.sh /tmp/
-COPY vault_test.sh /tmp/
