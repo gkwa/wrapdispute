@@ -31,6 +31,7 @@ jobs:
         cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
         cache-to: type=inline
   container:
+    needs: buildx
     runs-on: ubuntu-latest
     container: node:10.16-jessie
     steps:
