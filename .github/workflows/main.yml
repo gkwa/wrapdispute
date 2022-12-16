@@ -34,7 +34,7 @@ jobs:
     needs: buildx
     runs-on: ubuntu-latest
     container:
-      image: docker.io/${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
+      image: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
     steps:
     - name: test
       run: bash -x /test31.sh
