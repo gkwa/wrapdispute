@@ -25,4 +25,4 @@ jobs:
         cache-to: type=inline
     - name: Test
       run: |
-        docker run --rm ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
+        docker run --rm ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/test31.sh
