@@ -17,10 +17,13 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
     - name: Setup test
       run: |
-        docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/test31.sh
+        docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/gpg_setup.sh
     - name: Verify importing gpg key works
       run: |
-        docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/test32.sh
+        docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/gpg_test.sh
+    - name: Vault test
+      run: |
+        docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest vault_test.sh
     - name: Login to dockerhub
       uses: docker/login-action@v2
       with:
