@@ -4,7 +4,6 @@ services:
     image: taylorm/wrapdispute:latest
     build: .
   mytest:
-    depends: mybuild
     image: taylorm/wrapdispute:latest
     entrypoint:
     - /bin/bash
