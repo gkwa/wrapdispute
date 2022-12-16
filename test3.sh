@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# https://risanb.com/code/backup-restore-gpg-key/
+
 # docker run --rm --name mytest --workdir /tmp -v $(pwd):/tmp -ti taylorm/wrapdispute bash -x test3.sh
 
 set -e
@@ -43,4 +45,3 @@ ls -la /tmp/secret-key-backup.asc
 gpg --batch --passphrase="$passphrase" --import /tmp/secret-key-backup.asc
 gpg --import-ownertrust /tmp/trustdb-backup.txt
 gpg --list-secret-keys
-
