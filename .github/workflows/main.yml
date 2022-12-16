@@ -30,11 +30,11 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
         cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
         cache-to: type=inline
-  test31:
-    needs: buildx
-    secrets: inherit
-    container:
-      image: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
+  container:
+    runs-on: ubuntu-latest
+    container: node:10.16-jessie
     steps:
-    - name: test
-      run: bash -x /test31.sh
+    - name: Run in container
+      run: |
+        echo This job does specify a container.
+        echo It runs in the container instead of the VM.
