@@ -29,6 +29,10 @@ rm -f /tmp/secret-key-backup.asc
 gpg --export-secret-keys --pinentry-mode=loopback --armor --passphrase="$passphrase" --output=/tmp/secret-key-backup.asc
 ls -la /tmp/secret-key-backup.asc
 
+rm -f /tmp/secret-subkey-backup.asc
+gpg --export-secret-subkeys --pinentry-mode=loopback --armor --passphrase="$passphrase" --output=/tmp/secret-subkey-backup.asc
+ls -la /tmp/secret-subkey-backup.asc
+
 rm -f /tmp/trustdb-backup.txt
 gpg --export-ownertrust --armor >/tmp/trustdb-backup.txt
 ls -la /tmp/trustdb-backup.txt
@@ -42,5 +46,10 @@ gpg --list-secret-keys
 
 ls -la /tmp/secret-key-backup.asc
 gpg --batch --passphrase="$passphrase" --import /tmp/secret-key-backup.asc
+gpg --batch --passphrase="$passphrase" --import /tmp/secret-subkey-backup.asc
+
+sleep 1
 gpg --import-ownertrust /tmp/trustdb-backup.txt
 gpg --list-secret-keys
+
+rg --files --hidden /root/.gnupg
