@@ -5,9 +5,9 @@ services:
     build: .
   mytest:
     depends: mybuild
+    image: taylorm/wrapdispute:latest
     entrypoint:
-    - bash
-    -c
+    - /bin/bash
+    - -c
     - |
       /test31.sh
-    image: taylorm/wrapdispute:latest
