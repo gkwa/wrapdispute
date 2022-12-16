@@ -1,6 +1,6 @@
 #!/bin/bash
 
-passphrase=$(cat passphrase.txt)
+passphrase=$(cat /tmp/passphrase.txt)
 
 ls -la /tmp/secret-key-backup.asc
 gpg --batch --passphrase="$passphrase" --import /tmp/secret-key-backup.asc
