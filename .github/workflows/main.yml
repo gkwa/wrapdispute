@@ -32,6 +32,7 @@ jobs:
         cache-to: type=inline
   test31:
     needs: buildx
+    secrets: inherit
     runs-on: ubuntu-latest
     container:
       image: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
