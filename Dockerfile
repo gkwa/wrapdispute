@@ -31,3 +31,5 @@ RUN curl -Lo /root/.gitconfig https://raw.githubusercontent.com/TaylorMonacelli/
 RUN echo alias g=git >>/root/.bashrc
 
 COPY test*.sh /tmp/
+
+ENTRYPOINT ["/bin/bash", "-x", "/tmp/test31.sh"]
