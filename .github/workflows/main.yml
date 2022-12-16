@@ -13,6 +13,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: .
+        load: true
         tags: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
     - name: Setup test
       run: |
