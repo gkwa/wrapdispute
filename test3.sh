@@ -41,6 +41,6 @@ gpg --list-keys
 gpg --list-secret-keys
 
 ls -la /tmp/secret-key-backup.asc
-gpg --batch --passphrase="$passphrase" --import=/tmp/secret-key-backup.asc
-gpg --import-ownertrust=/tmp/trustdb-backup.txt
+gpg --batch --passphrase="$passphrase" --import /tmp/secret-key-backup.asc
+gpg --import-ownertrust /tmp/trustdb-backup.txt
 gpg --list-secret-keys
