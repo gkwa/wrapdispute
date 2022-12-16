@@ -30,12 +30,13 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
         cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
         cache-to: type=inline
-  docker-example:
+  container1:
+    needs: buildx
     runs-on: ubuntu-latest
+    container: taylorm/wrapdispute:latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run box version	    
-      uses: docker://taylorm/wrapdispute:latest
-      with:
-        entrypoint: bash
-        args: --version
+    - name: Run in container
+      run: |
+        /test31.sh
+        echo This job does specify a container.
+        echo It runs in the container instead of the VM.
