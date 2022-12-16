@@ -39,6 +39,7 @@ rm -rf ~/.gnupg
 
 # ensure we're empty now:
 gpg --list-keys
+gpg --list-secret-keys
 
 ls -la /tmp/secret-key-backup.asc
 gpg --batch --passphrase="$passphrase" --import=/tmp/secret-key-backup.asc
