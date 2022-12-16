@@ -25,4 +25,7 @@ jobs:
         cache-to: type=inline
     - name: Test
       run: |
-        docker run --rm ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/test31.sh
+        docker run --rm -v $(pwd):/tmp ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest /tmp/test31.sh
+    - name: Find artifcacts
+      run: |
+        ls -la
