@@ -31,9 +31,10 @@ jobs:
         cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
         cache-to: type=inline
   container1:
-    needs: buildx
     runs-on: ubuntu-latest
-    container: taylorm/wrapdispute:latest
+    needs: buildx
+    container:
+      image: taylorm/wrapdispute:latest
     steps:
     - name: Run in container
       run: |
