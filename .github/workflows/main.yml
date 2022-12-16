@@ -16,22 +16,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        push: false
-        platforms: linux/amd64
-        tags: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
-        cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
-        cache-to: type=inline
+      run: docker compose build
     - name: Test
-      run: docker run --rm -ti ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest bash -x /test31.sh
-    - name: Build and push
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        push: true
-        platforms: linux/amd64
-        tags: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
-        cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
-        cache-to: type=inline
+      run: docker compose run mytest

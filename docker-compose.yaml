@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  mybuild:
+    image: taylorm/wrapdispute:latest
+    build: .
+  mytest:
+    depends: mybuild
+    entrypoint:
+    - bash
+    -c
+    - |
+      /test31.sh
+    image: taylorm/wrapdispute:latest
