@@ -5,8 +5,6 @@ services:
     build: .
   mytest:
     image: taylorm/wrapdispute:latest
-    volumes:
-    - /tmp:/tmp
     entrypoint:
     - /bin/bash
     - -c
