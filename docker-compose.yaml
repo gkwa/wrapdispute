@@ -11,4 +11,4 @@ services:
     - /bin/bash
     - -c
     - |
-      /test31.sh
+      /tmp/test31.sh
