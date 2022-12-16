@@ -30,3 +30,10 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
         cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
         cache-to: type=inline
+  test31:
+    needs: buildx
+    runs-on: ubuntu-latest
+    image: docker.io/${{ secrets.DOCKER_USERNAME }}/wrapdispute:latest
+    steps:
+    - name: test
+      run: bash -x /test31.sh

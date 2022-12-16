@@ -21,6 +21,7 @@ script --flush --command $myscript </dev/null
 rm -f $myscript
 passphrase=$(grep Passphrase typescript | sed -e 's#Passphrase: *##' | tr -dc '[[:print:]]')
 echo $passphrase
+echo $passphrase >passphrase.txt
 echo -n $passphrase | xxd -c 1
 
 gpg --version
@@ -36,20 +37,3 @@ ls -la /tmp/secret-subkey-backup.asc
 rm -f /tmp/trustdb-backup.txt
 gpg --export-ownertrust --armor >/tmp/trustdb-backup.txt
 ls -la /tmp/trustdb-backup.txt
-
-# simulate disaster:
-rm -rf ~/.gnupg
-
-# ensure we're empty now:
-gpg --list-keys
-gpg --list-secret-keys
-
-ls -la /tmp/secret-key-backup.asc
-gpg --batch --passphrase="$passphrase" --import /tmp/secret-key-backup.asc
-gpg --batch --passphrase="$passphrase" --import /tmp/secret-subkey-backup.asc
-
-sleep 1
-gpg --import-ownertrust /tmp/trustdb-backup.txt
-gpg --list-secret-keys
-
-rg --files --hidden /root/.gnupg
