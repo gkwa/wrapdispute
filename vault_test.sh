@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# docker run --rm --workdir /tmp -v $(pwd):/tmp -ti taylorm/wrapdispute bash
+# bash -x vault_test.sh
+
 gpg --batch --passphrase 'mysecret' --quick-gen-key john.doe@gmail.com default default
 gpg --list-keys
 pass init -p aws-vault john.doe@gmail.com
@@ -22,9 +25,9 @@ echo AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
 echo AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
 # https://github.com/99designs/aws-vault/issues/866#issue-1140436627
-cat >>~/.aws/config <<EOF
-region=us-west-2
-EOF
+aws configure set profile.my_test_profile.region us-west-2
+cat ~/.aws/config
+
 pass ls
 pass show aws-vault/my_test_profile
 
