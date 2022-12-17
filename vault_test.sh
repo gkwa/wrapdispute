@@ -5,13 +5,10 @@
 
 # https://gist.github.com/jan-warchol/bd6340a8b49f0033aec5fbe3e9aa10d5
 
-gpg --batch --passphrase 'mysecret' --quick-gen-key john.doe@gmail.com default default
+gpg --batch --passphrase mysecret --quick-gen-key john.doe@example.com default default
 gpg --list-keys
-pass init -p aws-vault john.doe@gmail.com
+pass init -p aws-vault john.doe@example.com
 
-gpg --batch --edit-key john.doe@gmail.com quit
-
-export AWS_VAULT_BACKEND=pass
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=/root/.password-store/aws-vault
 
 set +o history
@@ -19,7 +16,7 @@ export AWS_ACCESS_KEY_ID=AKIZZZZAAAAAPPPPYYYY
 export AWS_SECRET_ACCESS_KEY=AAAABBBBBCCCCCDDDDEEEEFFFFGGGGIIIIHHHHP
 set -o history
 
-aws-vault add my_test_profile --debug --env --backend=pass
+aws-vault add my_test_profile --add-config --debug --env --backend=pass
 
 unset AWS_ACCESS_KEY_ID
 unset AWS_SECRET_ACCESS_KEY
